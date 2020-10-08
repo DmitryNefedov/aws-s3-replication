@@ -1,0 +1,41 @@
+{
+  "Version": "2008-10-17",
+  "Id": "",
+  "Statement": [
+    {
+      "Sid": "1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::__SOURCE_ACC_ID__:role/__SOURCE_ROLE_NAME__"
+      },
+      "Action": [
+        "s3:ReplicateObject",
+        "s3:ReplicateDelete"
+      ],
+      "Resource": "arn:aws:s3:::__DESTINATION_BUCKET__/*"
+    },
+    {
+      "Sid": "2",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::__SOURCE_ACC_ID__:root"
+      },
+      "Action": [
+        "s3:ObjectOwnerOverrideToBucketOwner"
+      ],
+      "Resource": "arn:aws:s3:::__DESTINATION_BUCKET__/*"
+    },
+    {
+      "Sid": "3",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::__SOURCE_ACC_ID__:role/__SOURCE_ROLE_NAME__"
+      },
+      "Action": [
+        "s3:GetBucketVersioning",
+        "s3:PutBucketVersioning"
+      ],
+      "Resource": "arn:aws:s3:::__DESTINATION_BUCKET__"
+    }
+  ]
+}

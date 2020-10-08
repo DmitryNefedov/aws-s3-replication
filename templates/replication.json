@@ -1,0 +1,16 @@
+{
+  "Role": "arn:aws:iam::__SOURCE_ACC_ID__:role/__SOURCE_ROLE_NAME__",
+  "Rules": [
+    {
+      "Status": "Enabled",
+      "Prefix": "",
+      "Destination": {
+        "Bucket": "arn:aws:s3:::__DESTINATION_BUCKET__",
+        "Account": "__DESTINATION_ACC_ID__",
+        "AccessControlTranslation": {
+          "Owner": "Destination"
+        }
+      }
+    }
+  ]
+}
